@@ -1,6 +1,7 @@
 package com.example.common.util
 
 import android.util.Log
+import com.example.library.BuildConfig
 
 class MyLog {
 
