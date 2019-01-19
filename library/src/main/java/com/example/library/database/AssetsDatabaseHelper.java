@@ -19,7 +19,6 @@ public class AssetsDatabaseHelper {
     private Context context;
     private String TAG = "AssetsDatabase";
 
-
     public AssetsDatabaseHelper(Context context) {
         this.context = context;
     }
