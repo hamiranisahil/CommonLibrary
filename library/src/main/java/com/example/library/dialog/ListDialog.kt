@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.library.R
+import kotlinx.android.synthetic.main.dialog_list.*
+import kotlinx.android.synthetic.main.list_item.view.*
 
 class ListDialog(
     context: Context,
