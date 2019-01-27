@@ -229,8 +229,8 @@ class ApiCallKotlin(
     }
 
     private fun setNoDataFound() {
-        LayoutInflater.from(context)
-            .inflate(R.layout.no_data_found, (rootView as ViewGroup).findViewWithTag("root_layout"), true)
+//        LayoutInflater.from(context)
+//            .inflate(R.layout.no_data_found, (rootView as ViewGroup).findViewWithTag("root_layout"), true)
     }
 
     private fun saveResponseToDisk(responseBody: ResponseBody, url: String): Boolean {
