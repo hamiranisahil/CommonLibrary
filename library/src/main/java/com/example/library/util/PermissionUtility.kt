@@ -65,7 +65,7 @@ class PermissionUtility {
             grantPermissions.clear()
             deniedPermissions.clear()
             for (permission in mPermissions) {
-                if (ActivityCompat.checkSelfPermission(mContext!!, permission) != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(mContext!!, permission) == PackageManager.PERMISSION_GRANTED) {
                     grantPermissions.add(permission)
                 } else {
                     deniedPermissions.add(permission)
@@ -99,6 +99,8 @@ class PermissionUtility {
                         }
 
                     })
+            } else {
+                mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
             }
         } else {
             mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
