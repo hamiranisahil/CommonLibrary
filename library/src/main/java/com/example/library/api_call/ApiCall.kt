@@ -38,11 +38,11 @@ import java.net.UnknownServiceException
 import java.util.concurrent.TimeUnit
 
 
-class ApiCallKotlin(
+class ApiCall(
     val context: Context,
     val requestParams: Array<Any>,
     val paramsBody: Any, @WebServiceType.Type val webServiceType: String,
-    val retrofitResponseListener: ApiCallKotlin.RetrofitResponseListener
+    val retrofitResponseListener: ApiCall.RetrofitResponseListener
 ) {
 
     internal var url = ""
@@ -105,7 +105,7 @@ class ApiCallKotlin(
 
             var responseCall: Call<ResponseBody>? = null
 
-            if (method.equals(ApiCallKotlin.RequestType.GET, true)) {
+            if (method.equals(RequestType.GET, true)) {
                 if (paramsBody is String) {
                     responseCall = apiInterface?.get(HEADER_MAP!!, url + paramsBody, getMapFromGson(null))
                 } else {

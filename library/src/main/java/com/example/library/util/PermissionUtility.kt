@@ -56,6 +56,7 @@ class PermissionUtility {
         }
     }
 
+    //    Pass onRequestPermissionsResult from Activity
     fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == mPermissionRequestCode) {
             grantPermissions.clear()
@@ -71,6 +72,7 @@ class PermissionUtility {
         }
     }
 
+    //    Pass onActivityResult from Activity
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (mPermissionRequestCode == requestCode) {
             grantPermissions.clear()
