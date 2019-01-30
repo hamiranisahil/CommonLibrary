@@ -52,6 +52,7 @@ class PermissionUtility {
             }
 
         } else {
+            mPermissionRequestCode = -1
             mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
         }
     }
