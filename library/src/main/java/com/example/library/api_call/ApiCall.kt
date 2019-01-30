@@ -19,7 +19,6 @@ import com.example.library.R
 import com.example.library.modals.CommonRes
 import com.example.library.topsnackbar.MySnackbar
 import com.example.library.util.AppConfig
-import com.example.library.util.Util
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.MediaType
