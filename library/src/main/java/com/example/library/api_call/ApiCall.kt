@@ -15,6 +15,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.library.BuildConfig
+import com.example.library.R
 import com.example.library.modals.CommonRes
 import com.example.library.topsnackbar.MySnackbar
 import com.example.library.util.AppConfig
@@ -229,8 +230,8 @@ class ApiCallKotlin(
     }
 
     private fun setNoDataFound() {
-        LayoutInflater.from(context)
-            .inflate(R.layout.no_data_found, (rootView as ViewGroup).findViewWithTag("root_layout"), true)
+//        LayoutInflater.from(context)
+//            .inflate(R.layout.no_data_found, (rootView as ViewGroup).findViewWithTag("root_layout"), true)
     }
 
     private fun saveResponseToDisk(responseBody: ResponseBody, url: String): Boolean {
