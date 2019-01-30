@@ -40,15 +40,26 @@ class PermissionUtility {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             for (permission in permissions) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    deniedPermissions.add(permission)
                     ActivityCompat.requestPermissions(context as Activity, permissions, permissionRequestCode)
                     break
+                } else {
+                    grantPermissions.add(permission)
                 }
             }
+            if (deniedPermissions.size <= 0 && grantPermissions.size > 0) {
+                checkReject()
+            }
+
+        } else {
+            mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
         }
     }
 
     fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == mPermissionRequestCode) {
+            grantPermissions.clear()
+            deniedPermissions.clear()
             for (i in 0 until permissions.size) {
                 if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
                     grantPermissions.add(permissions[i])
@@ -97,12 +108,13 @@ class PermissionUtility {
                                 (mContext as Activity).finish()
                             }
                         }
-
                     })
             } else {
+                mPermissionRequestCode = -1
                 mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
             }
         } else {
+            mPermissionRequestCode = -1
             mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
         }
     }
