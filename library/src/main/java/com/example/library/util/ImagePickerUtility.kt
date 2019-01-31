@@ -11,6 +11,7 @@ import android.provider.MediaStore
 import android.support.annotation.RequiresPermission
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import com.example.library.app_permissions.PermissionManagerUtility
 import java.io.*
 
 
@@ -46,11 +47,11 @@ class ImagePickerUtility() {
     }
 
     private fun cameraIntent() {
-        PermissionUtility().requestPermission(
+        PermissionManagerUtility().requestPermission(
             sContext,
             true,
             PERMISSION_REQUEST_CAMERA,
-            object : PermissionUtility.PermissionListener {
+            object : PermissionManagerUtility.PermissionListener {
                 override fun onAppPermissions(
                     grantPermissions: ArrayList<String>,
                     deniedPermissions: ArrayList<String>
@@ -66,11 +67,11 @@ class ImagePickerUtility() {
     }
 
     private fun galleryIntent() {
-        PermissionUtility().requestPermission(
+        PermissionManagerUtility().requestPermission(
             sContext,
             true,
             PERMISSION_REQUEST_CAMERA,
-            object : PermissionUtility.PermissionListener {
+            object : PermissionManagerUtility.PermissionListener {
                 override fun onAppPermissions(
                     grantPermissions: ArrayList<String>,
                     deniedPermissions: ArrayList<String>
@@ -102,7 +103,7 @@ class ImagePickerUtility() {
             sSelectImageListener = selectImageListener
             selectImage()
         } catch (e: SecurityException) {
-            Log.e("PermissionUtility", "Security Exception: No Permissions Found.")
+            Log.e("PermissionManagerUtility", "Security Exception: No Permissions Found.")
         }
     }
 
@@ -119,7 +120,7 @@ class ImagePickerUtility() {
             sSelectImageListener = selectImageListener
             cameraIntent()
         } catch (e: SecurityException) {
-            Log.e("PermissionUtility", "Security Exception: No Permissions Found.")
+            Log.e("PermissionManagerUtility", "Security Exception: No Permissions Found.")
         }
     }
 
@@ -134,7 +135,7 @@ class ImagePickerUtility() {
             sSelectImageListener = selectImageListener
             galleryIntent()
         } catch (e: SecurityException) {
-            Log.e("PermissionUtility", "Security Exception: No Permissions Found.")
+            Log.e("PermissionManagerUtility", "Security Exception: No Permissions Found.")
         }
     }
 

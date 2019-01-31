@@ -1,4 +1,4 @@
-package com.example.library.util
+package com.example.library.app_permissions
 
 import android.app.Activity
 import android.content.Context
@@ -12,7 +12,7 @@ import android.support.v4.app.ActivityCompat
 import com.example.common.util.CustomAlertDialog
 
 
-class PermissionUtility {
+class PermissionManagerUtility {
 
     companion object {
         var mPermissionRequestCode = -1
@@ -104,7 +104,10 @@ class PermissionUtility {
                                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                                 val uri = Uri.fromParts("package", mContext!!.packageName, null)
                                 intent.setData(uri)
-                                (mContext as Activity).startActivityForResult(intent, mPermissionRequestCode)
+                                (mContext as Activity).startActivityForResult(
+                                    intent,
+                                    mPermissionRequestCode
+                                )
 
                             } else {
                                 (mContext as Activity).finish()
@@ -121,7 +124,10 @@ class PermissionUtility {
 
     private fun callBack() {
         mPermissionRequestCode = -1
-        mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
+        mPermissionListener!!.onAppPermissions(
+            grantPermissions,
+            deniedPermissions
+        )
     }
 
     interface PermissionListener {
