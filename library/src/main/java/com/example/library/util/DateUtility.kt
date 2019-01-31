@@ -1,4 +1,4 @@
-package com.example.library.util
+package com.example.library.util;
 
 import android.util.Log
 import java.text.ParseException
@@ -69,6 +69,14 @@ class DateUtility {
         return -1
     }
 
+    fun unixTimestampToDate(format: String, milliseconds: Long?): String {
+        return unixTimestampToDate(format, milliseconds, Locale.getDefault())
+    }
+
+    fun unixTimestampToDate(format: String, milliseconds: Long?, locale: Locale): String {
+        return SimpleDateFormat(format, locale).format(Date(milliseconds!! * 1000L))
+    }
+
     private fun getDatePattern(dateString: String?): String {
         return if (isDateTime(dateString)) {
             if (dateString!!.contains("/")) DateTimeFormat.DATE_TIME_PATTERN_2 else DateTimeFormat.DATE_TIME_PATTERN_1
@@ -81,4 +89,13 @@ class DateUtility {
         return dateString != null && dateString.trim { it <= ' ' }.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray().size > 1
     }
 
+    fun getPreviousDateInLong(daysFromToday: Int): Long {
+        return System.currentTimeMillis() - daysFromToday * 24 * 60 * 60 * 1000
+
+    }
+
+    fun getNextDateInLong(daysFromToday: Int): Long {
+        return System.currentTimeMillis() - daysFromToday * 24 * 60 * 60 * 1000
+
+    }
 }
