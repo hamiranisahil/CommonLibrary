@@ -52,8 +52,7 @@ class PermissionUtility {
             }
 
         } else {
-            mPermissionRequestCode = -1
-            mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
+            callBack()
         }
     }
 
@@ -113,15 +112,17 @@ class PermissionUtility {
                         }
                     })
             } else {
-                mPermissionRequestCode = -1
-                mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
+                callBack()
             }
         } else {
-            mPermissionRequestCode = -1
-            mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
+            callBack()
         }
     }
 
+    private fun callBack() {
+        mPermissionRequestCode = -1
+        mPermissionListener!!.onAppPermissions(grantPermissions, deniedPermissions)
+    }
 
     interface PermissionListener {
         fun onAppPermissions(grantPermissions: ArrayList<String>, deniedPermissions: ArrayList<String>)
