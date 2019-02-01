@@ -1,4 +1,4 @@
-package com.example.library.util
+package com.example.library.ads
 
 import android.app.Activity
 import android.content.Context
